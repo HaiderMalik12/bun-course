@@ -15,6 +15,9 @@ const server = Bun.serve({
         if(url.pathname === '/contact'){
             return new Response("Contact Us!")
         }
+        if(url.pathname === '/feed'){
+            throw new Error('Opps!')
+        }
 
         return new Response('404!')
        
