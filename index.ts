@@ -15,20 +15,22 @@ const server = Bun.serve({
         if(url.pathname === '/contact'){
             return new Response("Contact Us!")
         }
-        if(url.pathname === '/feed'){
-            throw new Error('Error while fetching the feed!')
+        // handle Error
+        if(url.pathname === "/feed"){
+            throw new Error('Could not fetch feed')
         }
 
         return new Response('404!')
        
     },
     error(error){
-        return new Response(`<pre>${error} \n${error.stack} </pre>`, {
-            headers:{
+        return new Response(`<pre> ${error} \n ${error.stack} </pre>`,{
+            headers: {
                 'Content-Type': 'text/html'
             }
         })
     }
+   
 })
 
 console.log(`Listening on PORT http://localhost:${server.port}`)
